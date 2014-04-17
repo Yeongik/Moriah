@@ -11,6 +11,7 @@
     <script type="text/javascript">
 	function statusCalc(element){
 		var form = element.form;
+		var Plus = Number(form.Plus.value);
 		var BAtk = Number(form.BAtk.value);
 		var BDef = Number(form.BDef.value);
 		var NBAtk = Number(form.NBAtk.value);
@@ -18,7 +19,7 @@
 		var Weapons1 = document.getElementById("Weapons1").value;
 		var Weapons2 = document.getElementById("Weapons2").value;
 		var NMAtk,NMDef,AdAtk1=0,AdDef1=0,AdAtk2=0,AdDef2=0;
-		var SAtk,SDef;
+		var SAtk,SDef,PAtk,PDef;
 		var MAtk,MDef,NBAtk,NBDef;
 		
 		MAtk = BAtk*1.15;
@@ -29,6 +30,9 @@
 		
 		NMAtk = NBAtk*1.15;
 		NMDef = NBDef*1.15;
+		
+		PAtk = (NBAtk*0.05)*Plus;
+		PDef = (NBDef*0.05)*Plus;
 		
 		TotalAtk = NMAtk+SAtk;
 		TotalDef = NMDef+SDef;
@@ -110,8 +114,8 @@
 					break;
 			}
 			
-			TotalAtk=TotalAtk+AdAtk1+AdAtk2;
-			TotalDef=TotalDef+AdDef1+AdDef2;
+			TotalAtk=TotalAtk+AdAtk1+AdAtk2+PAtk;
+			TotalDef=TotalDef+AdDef1+AdDef2+PDef;
 
 			form.TotalAtk.value = TotalAtk;
 			form.TotalDef.value = TotalDef;
@@ -134,6 +138,8 @@
 					<form>
 						<fieldset>
 							<legend>InputStatus</legend>
+							<p><label>각성</label>
+							<input type="number" name="Plus" min="0"></p>
 							<p><label>SR Lv.Max 공격력</label>
 							<input type="number" name="BAtk" placeholder="ex)10166" required></p>
 							<p><label>SR+ Lv.Max 공격력</label>
