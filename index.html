@@ -13,41 +13,33 @@
 		var form = element.form;
 		var BAtk = Number(form.BAtk.value);
 		var BDef = Number(form.BDef.value);
-		var CType = document.getElementById("CType").value;
+		var NBAtk = Number(form.NBAtk.value);
+		var NBDef = Number(form.NBDef.value);
 		var Weapons1 = document.getElementById("Weapons1").value;
 		var Weapons2 = document.getElementById("Weapons2").value;
-		var ReAtk,ReDef,AdAtk1=0,AdDef1=0,AdAtk2=0,AdDef2=0;
-		var NextBAtk,NextBDef;
-		var MaxAtk,MaxDef,TotalAtk,TotalDef;
-
-		NextBAtk = BAtk*1.2;
-		NextBDef = BDef*1.2;
-	
-		switch(CType){
-			case 'R' :
-				ReAtk = BAtk*2.53;
-				ReDef = BDef*2.53;
-				MaxAtk = 2.759*NextBAtk;
-				MaxDef = 2.759*NextBDef;
-				TotalAtk = MaxAtk+(ReAtk*0.3);
-				TotalDef = MaxDef+(ReDef*0.3);
-				break;
-			case 'S' :
-				ReAtk = BAtk*2.99;
-				ReDef = BDef*2.99;
-				MaxAtk = 3.22*NextBAtk;
-				MaxDef = 3.22*NextBDef;
-				TotalAtk = MaxAtk+(ReAtk*0.3);
-				TotalDef = MaxDef+(ReDef*0.3);
-				break;
-		}
+		var NMAtk,NMDef,AdAtk1=0,AdDef1=0,AdAtk2=0,AdDef2=0;
+		var SAtk,SDef;
+		var MAtk,MDef,NBAtk,NBDef;
+		
+		MAtk = BAtk*1.15;
+		MDef = BDef*1.15;
+		
+		SAtk = MAtk*0.3;
+		SDef = MDef*0.3;
+		
+		NMAtk = NBAtk*1.15;
+		NMDef = NBDef*1.15;
+		
+		TotalAtk = NMAtk+SAtk;
+		TotalDef = NMDef+SDef;
+		
 		switch(Weapons1){
 			case '1':
 				AdAtk1=0;
 				AdDef1=0;
 				break;
 			case '2':
-				AdAtk1=(ReAtk*0.1)*0.15;
+				AdAtk1=(MAtk*0.1)*0.15;
 				AdDef1=0;
 				break;
 			case '3':
@@ -55,7 +47,7 @@
 				AdDef1=0;
 				break;
 			case '4':
-				AdAtk1=(ReAtk*0.15)*0.15;
+				AdAtk1=(MAtk*0.15)*0.15;
 				AdDef1=0;
 				break;
 			case '5':
@@ -64,7 +56,7 @@
 				break;
 			case '6':
 				AdAtk1=0;
-				AdDef1=(ReDef*0.1)*0.15;
+				AdDef1=(MDef*0.1)*0.15;
 				break;
 			case '7':
 				AdAtk1=0;
@@ -72,7 +64,7 @@
 				break;
 			case '8':
 				AdAtk1=0;
-					AdDef1=(ReDef*0.15)*0.15;
+					AdDef1=(MDef*0.15)*0.15;
 					break;
 				case '9':
 					AdAtk1=0;
@@ -85,7 +77,7 @@
 					AdDef2=0;
 					break;
 				case '2':
-					AdAtk2=(ReAtk*0.1)*0.15;
+					AdAtk2=(MAtk*0.1)*0.15;
 					AdDef2=0;
 					break;
 				case '3':
@@ -93,7 +85,7 @@
 					AdDef2=0;
 					break;
 				case '4':
-					AdAtk2=(ReAtk*0.15)*0.15;
+					AdAtk2=(MAtk*0.15)*0.15;
 					AdDef2=0;
 					break;
 				case '5':
@@ -102,7 +94,7 @@
 					break;
 				case '6':
 					AdAtk2=0;
-					AdDef2=(ReDef*0.1)*0.15;
+					AdDef2=(MDef*0.1)*0.15;
 					break;
 				case '7':
 					AdAtk2=0;
@@ -110,7 +102,7 @@
 					break;
 				case '8':
 					AdAtk2=0;
-					AdDef2=(ReDef*0.15)*0.15;
+					AdDef2=(MDef*0.15)*0.15;
 					break;
 				case '9':
 					AdAtk2=0;
@@ -120,8 +112,7 @@
 			
 			TotalAtk=TotalAtk+AdAtk1+AdAtk2;
 			TotalDef=TotalDef+AdDef1+AdDef2;
-			form.ReAtk.value = ReAtk;
-			form.ReDef.value = ReDef;
+
 			form.TotalAtk.value = TotalAtk;
 			form.TotalDef.value = TotalDef;
 		}
@@ -131,91 +122,82 @@
 
 	<body>
 	    <header>
-	      <div class="inner">
-	        <h1>Moriah</h1>
-	        <h2>Moriah Saga Utility</h2>
-	        <a href="http://cafe.naver.com/moriahsaga2" class="button"><small>Go to Cafe</small>Moriah R</a>
-	      </div>
+			<div class="inner">
+				<h1>Moriah</h1>
+				<h2>Moriah Saga Utility</h2>
+				<a href="http://cafe.naver.com/moriahsaga2" class="button"><small>Go to Cafe</small>Moriah R</a>
+			</div>
 		</header>
-	<div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <form>
-			<fieldset>
-				<legend>InputStatus</legend>
-				<p><label>카드 등급</label>
-  				<select id="CType">
-  					<option value="R">R</option>
-  					<option value="S">SR</option>
-  				</select><small>&nbsp&nbsp//확인 필수 !!</small></p>
-				<p><label>공격력</label>
-				<input type="number" name="BAtk" required></p>
-				<p><label>방어력</label>
-				<input type="number" name="BDef" required></p>
-				<p><label><b></ㅠ>진화시 무구 선택</b></label></p>
-				<p><label>I </label><select id="Weapons1">
-					<optgroup label="기본">
-						<option value="1">없음</option>
-					</optgroup>
-					<optgroup label="공격 무구">
-						<option value="2">참치미사일</option>
-						<option value="3">새우바주카</option>
-						<option value="4">청새치미사일</option>
-						<option value="5">악마의날개</option>
-					</optgroup>
-					<optgroup label="방어 무구">
-						<option value="6">낫또쿠키</option>
-						<option value="7">무지개슬리퍼</option>
-						<option value="8">매운쿠키</option>
-						<option value="9">천사의날개</option>
-					</optgroup>
-				</select>&nbsp&nbsp
-				<label>II </label><select id="Weapons2">
-					<optgroup label="기본">
-						<option value="1">없음</option>
-					</optgroup>
-					<optgroup label="공격 무구">
-						<option value="2">참치미사일</option>
-						<option value="3">새우바주카</option>
-						<option value="4">청새치미사일</option>
-						<option value="5">악마의날개</option>
-					</optgroup>
-					<optgroup label="방어 무구">
-						<option value="6">낫또쿠키</option>
-  						<option value="7">무지개슬리퍼</option>
-  						<option value="8">매운쿠키</option>
-  						<option value="9">천사의날개</option>
-  					</optgroup>
-  				</select></p>
-  				<button type="button" onclick="statusCalc(this);">실행</button>
-  			</fieldset><br>
-  			<fieldset>
-  				<legend>BeforeStatus</legend>
-  				<p><label><b>Lv / Mastery Max</b></label></p>
-  				<p><label>공격력</label>
-  				<input type="text" name="ReAtk" readonly></p>
-  				<p><label>방어력</label>
-  				<input type="text" name="ReDef" readonly></p>
-  			</fieldset>
-  			<fieldset>
-  				<legend>EvolutionStatus</legend>
-  				<p><label><b>Result Status</b></label></p>
-  				<p><label>공격력</label>
-  				<input type="text" name="TotalAtk" readonly></p>
-  				<p><label>방어력</label>
-  					<input type="text" name="TotalDef" readonly></p>
-				</fieldset>
-			</form>
-        </section>
+		<div id="content-wrapper">
+			<div class="inner clearfix">
+				<section id="main-content">
+					<form>
+						<fieldset>
+							<legend>InputStatus</legend>
+							<p><label>SR Lv.Max 공격력</label>
+							<input type="number" name="BAtk" placeholder="ex)10166" required></p>
+							<p><label>SR+ Lv.Max 공격력</label>
+							<input type="number" name="NBAtk" placeholder="ex)13138" required></p>
+							<p><label>SR Lv.Max 방어력</label>
+							<input type="number" name="BDef" placeholder="ex)10166" required></p>
+							<p><label>SR+ Lv.Max 방어력</label>
+							<input type="number" name="NBDtk" placeholder="ex)13138" required></p>
+							<p><label><b></ㅠ>진화시 무구 선택</b></label></p>
+							<p><label>I </label><select id="Weapons1">
+								<optgroup label="기본">
+									<option value="1">없음</option>
+								</optgroup>
+								<optgroup label="공격 무구">
+									<option value="2">참치미사일</option>
+									<option value="3">새우바주카</option>
+									<option value="4">청새치미사일</option>
+									<option value="5">악마의날개</option>
+								</optgroup>
+								<optgroup label="방어 무구">
+									<option value="6">낫또쿠키</option>
+									<option value="7">무지개슬리퍼</option>
+									<option value="8">매운쿠키</option>
+									<option value="9">천사의날개</option>
+								</optgroup>
+							</select>&nbsp&nbsp
+							<label>II </label><select id="Weapons2">
+								<optgroup label="기본">
+									<option value="1">없음</option>
+								</optgroup>
+								<optgroup label="공격 무구">
+									<option value="2">참치미사일</option>
+									<option value="3">새우바주카</option>
+									<option value="4">청새치미사일</option>
+									<option value="5">악마의날개</option>
+								</optgroup>
+								<optgroup label="방어 무구">
+									<option value="6">낫또쿠키</option>
+									<option value="7">무지개슬리퍼</option>
+									<option value="8">매운쿠키</option>
+									<option value="9">천사의날개</option>
+								</optgroup>
+							</select></p>
+							<button type="button" onclick="statusCalc(this);">실행</button>
+						</fieldset><br>
+						<fieldset>
+							<legend>EvolutionStatus</legend>
+							<p><label><b>Result Status</b></label></p>
+							<p><label>공격력</label>
+							<input type="text" name="TotalAtk" readonly></p>
+							<p><label>방어력</label>
+							<input type="text" name="TotalDef" readonly></p>
+						</fieldset>
+					</form>
+				</section>
 
-        <aside id="sidebar">
-          <a href="https://github.com/Yeongik/Moriah/zipball/master" class="button">
-            <small>empty</small>
-            Empty
-          </a>
-          <p>is maintained by 라히모스.</p>
-        </aside>
-      </div>
-    </div>
-  </body>
+				<aside id="sidebar">
+					<a href="https://github.com/Yeongik/Moriah/zipball/master" class="button">
+					<small>empty</small>
+					Empty
+					</a>
+					<p>is maintained by 라히모스.</p>
+				</aside>
+			</div>
+		</div>
+	</body>
 </html>
