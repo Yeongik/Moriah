@@ -14,8 +14,6 @@
 		var Plus = Number(form.Plus.value);
 		var BAtk = Number(form.BAtk.value);
 		var BDef = Number(form.BDef.value);
-		var NBAtk = Number(form.NBAtk.value);
-		var NBDef = Number(form.NBDef.value);
 		var Weapons1 = document.getElementById("Weapons1").value;
 		var Weapons2 = document.getElementById("Weapons2").value;
 		var NMAtk,NMDef,AdAtk1=0,AdDef1=0,AdAtk2=0,AdDef2=0;
@@ -24,6 +22,9 @@
 		
 		MAtk = Math.floor(BAtk*1.15);
 		MDef = Math.floor(BDef*1.15);
+		
+		NBAtk = Math.ceil(BAtk*1.2923);
+		NBDef = Math.ceil(BDef*1.2923);
 		
 		SAtk = Math.floor(MAtk*0.15)+Math.floor(MAtk*0.15);
 		SDef = Math.floor(MDef*0.15)+Math.floor(MDef*0.15);
@@ -143,12 +144,8 @@
 							<input type="number" name="Plus" min="0" placeholder="0"></p>
 							<p><label>SR Lv.Max 공격력</label>
 							<input type="number" name="BAtk" placeholder="ex)10166" required></p>
-							<p><label>SR+ Lv.Max 공격력</label>
-							<input type="number" name="NBAtk" placeholder="ex)13138" required></p>
 							<p><label>SR Lv.Max 방어력</label>
 							<input type="number" name="BDef" placeholder="ex)10166" required></p>
-							<p><label>SR+ Lv.Max 방어력</label>
-							<input type="number" name="NBDef" placeholder="ex)13138" required></p>
 							<p><label><b></ㅠ>진화시 무구 선택</b></label></p>
 							<p><label>I </label><select id="Weapons1">
 								<optgroup label="기본">
