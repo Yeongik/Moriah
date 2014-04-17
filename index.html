@@ -22,17 +22,17 @@
 		var SAtk,SDef,PAtk,PDef;
 		var MAtk,MDef,NBAtk,NBDef;
 		
-		MAtk = BAtk*1.15;
-		MDef = BDef*1.15;
+		MAtk = Math.floor(BAtk*1.15);
+		MDef = Math.floor(BDef*1.15);
 		
-		SAtk = MAtk*0.3;
-		SDef = MDef*0.3;
+		SAtk = Math.floor(MAtk*0.3);
+		SDef = Math.floor(MDef*0.3);
 		
-		NMAtk = NBAtk*1.15;
-		NMDef = NBDef*1.15;
+		NMAtk = Math.floor(NBAtk*1.15);
+		NMDef = Math.floor(NBDef*1.15);
 		
-		PAtk = (NBAtk*0.05)*Plus;
-		PDef = (NBDef*0.05)*Plus;
+		PAtk = Math.floor((NBAtk*0.05)*Plus);
+		PDef = Math.floor((NBDef*0.05)*Plus);
 		
 		TotalAtk = NMAtk+SAtk;
 		TotalDef = NMDef+SDef;
@@ -114,8 +114,8 @@
 					break;
 			}
 			
-			TotalAtk=TotalAtk+AdAtk1+AdAtk2+PAtk;
-			TotalDef=TotalDef+AdDef1+AdDef2+PDef;
+			TotalAtk=Math.floor(TotalAtk+AdAtk1+AdAtk2+PAtk);
+			TotalDef=Math.floor(TotalDef+AdDef1+AdDef2+PDef);
 
 			form.TotalAtk.value = TotalAtk;
 			form.TotalDef.value = TotalDef;
