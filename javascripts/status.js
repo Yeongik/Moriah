@@ -5,6 +5,7 @@ function statusCalc(){
 	var Weapons1 = document.getElementById("Weapons1").value;
 	var Weapons2 = document.getElementById("Weapons2").value;
 	var Weapons3 = document.getElementById("Weapons3").value;
+	var CType = document.getElementById("CType").value;
 	var NMAtk,NMDef,AdAtk1=0,AdDef1=0,AdAtk2=0,AdDef2=0;
 	var SAtk,SDef,PAtk,PDef;
 	var MAtk,MDef,NBAtk,NBDef;
@@ -13,8 +14,16 @@ function statusCalc(){
 	MAtk = Math.floor(BAtk*1.15);
 	MDef = Math.floor(BDef*1.15);
 	
-	NBAtk = Math.ceil(BAtk*1.2923);
-	NBDef = Math.ceil(BDef*1.2923);
+	switch(CType){
+		case 'S':
+			NBAtk = Math.ceil(BAtk*1.2923);
+			NBDef = Math.ceil(BDef*1.2923);
+			break;
+		case 'R':
+			NBAtk = Math.ceil(BAtk*1.309);
+			NBDef = Math.ceil(BDef*1.309);
+			break;
+	}
 	
 	SAtk = Math.floor(MAtk*0.15)+Math.floor(MAtk*0.15);
 	SDef = Math.floor(MDef*0.15)+Math.floor(MDef*0.15);
