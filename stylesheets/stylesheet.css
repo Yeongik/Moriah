@@ -224,7 +224,7 @@ form {
 
 /* GENERAL ELEMENT TYPE STYLES */
 #main-content legend {
-  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif; 
+  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, Sans-Serif; 
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 8px;
